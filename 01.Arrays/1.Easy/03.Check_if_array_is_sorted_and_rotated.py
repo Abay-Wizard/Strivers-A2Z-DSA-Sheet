@@ -1,4 +1,4 @@
-/*
+'''
 QUESTION:-
 Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
 There may be duplicates in the original array.
@@ -14,9 +14,6 @@ Input: nums = [2,1,3,4]
 Output: false
 Explanation: There is no sorted array once rotated that can make nums.
 
-*/
-
-/*
 APPROACH:-
 Compare all neignbour elements (a,b) in A,
 the case of a > b can happen at most once.
@@ -27,25 +24,19 @@ If all a <= b, A is already sorted so answer is true.
 If all a <= b but only one a > b, and the first element is greater than equal to last element
 we can rotate and make b the first element so answer is true.
 Other case, return false.
-*/
 
-// CODE:-
+'''
+def check_if_sorted_and_rotated(nums):
+    count=0
+    for i in range(len(nums)-1):
+        if nums[i]>nums[i+1]:
+            count+=1
+    if count==0:
+        return True
+    elif( count==1 and nums[0]>=nums[-1]):
+        return True
+    else:
+        return False
 
-bool check(vector<int> &nums)
-{
-    int cnt = 0;
-    int n = nums.size();
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (nums[i] > nums[i + 1])
-            cnt++;
-    }
-    if (cnt == 0)
-        return true;
-    else if (cnt == 1 && nums[0] >= nums[n - 1])
-        return true;
-    return false;
-}
-
-// TIME COMPLEXITY = O(N)
-// SPACE COMPLEXITY = O(0)
+        
+        
